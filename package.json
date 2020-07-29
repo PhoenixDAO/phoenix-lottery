@@ -1,0 +1,22 @@
+{
+  "name": "phoenix-lottery",
+  "version": "1.0.0",
+  "description": "To compile all the files in a single solidity file, run `npm i` inside the `solidity-flattener/` folder. Then use the following command inside that `solidity-flattener` folder: ```     npm start '../PhoenixLottery.sol' ``` It will output the final file inside the `solidity-flattener/out/` folder.",
+  "main": "truffle-config.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "truffle-hdwallet-provider": "^1.0.4",
+    "web3": "^1.0.0-beta.46"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "truffle compile && truffle test"
+  },
+ 
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+ 
+}

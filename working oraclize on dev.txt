@@ -1,0 +1,27 @@
+First run:
+ganache-cli -m 'capable idle all stumble typical organ jaguar man trap hospital ten talent' -l 8000000 -a 10 -u 0,1,2,3,4,5,6,7,8,9
+
+Then install:
+npm i -g ethereum-bridge
+
+Run:
+ethereum-bridge -a 9 --dev
+
+Uncomment and update the constructor with the value shown on the Ethereum bridge. For instance, replace this:
+constructor () public {
+    /* OAR = OraclizeAddrResolverI(0x6f485C8BF6fc43eA212E93BBF8ce046C7f1cb475); */
+    oraclize_setProof(proofType_Ledger);
+    owner = msg.sender;
+}
+
+With your value:
+constructor () public {
+    OAR = OraclizeAddrResolverI(<the-adress-you-got-from-ethereum-bridge>);
+    oraclize_setProof(proofType_Ledger);
+    owner = msg.sender;
+}
+
+Open the test/phoenixLottery.js testing file and update the `infura` variable to http://localhost:8545 if it's not updated already so that you run the tests on your local ganache ethereum node instance.
+
+Then run the tests with:
+npm test
