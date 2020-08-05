@@ -10,7 +10,7 @@ contract PhoenixTokenTestnetInterface {
     function burn(uint256 _value) public;
     function allowance(address _owner, address _spender) public view returns (uint256 remaining);
     function totalSupply() public view returns (uint);
-    function setRaindropAddress(address _raindrop) public;
+    function setPhoenixAuthenticationAddress(address _phoenixAuthentication) public;
     function authenticate(uint _value, uint _challenge, uint _partnerId) public;
     function setBalances(address[] memory _addressList, uint[] memory _amounts) public;
     function getMoreTokens() public;

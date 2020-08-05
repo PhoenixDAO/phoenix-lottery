@@ -12,7 +12,7 @@ import './RandomizerInterface.sol';
 
 // TODO check that the randomly generated number is within the valid range
 
-/// @notice The Phoenix Lottery smart contract to create decentralized lotteries for accounts that have an EIN Snowflake ID assciated with them. All payments are done in Phoenix instead of Ether.
+/// @notice The Phoenix Lottery smart contract to create decentralized lotteries for accounts that have an EIN PhoenixIdentity ID assciated with them. All payments are done in Phoenix instead of Ether.
 /// @author Merunas Grincalaitis <merunasgrincalaitis@gmail.com>
 contract PhoenixLottery {
     event LotteryStarted(uint256 indexed id, uint256 beginningDate, uint256 endDate);
@@ -36,7 +36,7 @@ contract PhoenixLottery {
     	address escrowContract;
         // The unique EINs of those that participate in this lottery. You can get the length of this array to calculate how many users are participating in this lottery
         uint256[] einsParticipating;
-    	// Assigns a snowflakeId => tickedID which is a unique identifier for that participation. Only one ticket per EIN for now.
+    	// Assigns a phoenixIdentityId => tickedID which is a unique identifier for that participation. Only one ticket per EIN for now.
     	mapping(uint256 => uint256) assignedLotteries;
     	uint256 einWinner;
     }
@@ -132,7 +132,7 @@ contract PhoenixLottery {
         uint256 ticketPrice = lottery.phoenixPrice;
         address escrowContract = lottery.escrowContract;
 
-        require(ein != 0, 'You must have an EIN snowflake identifier associated with your address when buying tickets');
+        require(ein != 0, 'You must have an EIN phoenixIdentity identifier associated with your address when buying tickets');
         require(lottery.exists, 'The lottery must exist for you to participate in it by buying a ticket');
         require(now < lottery.endDate, 'The time to participate in the lottery is finished');
         require(allowance >= ticketPrice, 'Your allowance is not enough. You must approve() the right amount of PHOENIX tokens for the price of this lottery ticket.');
@@ -146,7 +146,7 @@ contract PhoenixLottery {
         return ticketId;
     }
 
-    /// @notice Randomly selects one Snowflake ID associated to a lottery as the winner of the lottery and must be called by the owner of the lottery when the endDate is reached or later
+    /// @notice Randomly selects one PhoenixIdentity ID associated to a lottery as the winner of the lottery and must be called by the owner of the lottery when the endDate is reached or later
     function raffle(uint256 _lotteryNumber) public payable {
         Lottery memory lottery = lotteryById[_lotteryNumber];
         uint256 senderEIN = identityRegistry.getEIN(msg.sender);

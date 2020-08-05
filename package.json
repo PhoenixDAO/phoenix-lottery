@@ -14,9 +14,7 @@
   "scripts": {
     "test": "truffle compile && truffle test"
   },
- 
   "keywords": [],
   "author": "",
   "license": "ISC"
- 
 }

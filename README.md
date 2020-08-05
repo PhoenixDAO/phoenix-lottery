@@ -1,5 +1,5 @@
 # Phoenix Lottery
-This lottery contract uses Phoenix Snowflake Ids (EINs) for creating unique lotteries with rewards setup in PHNX tokens instead of ETH. It's made of an PhoenixEscrow contract that holds PHNX for each unique lottery, a Randomizer contract that generates random numbers with Oraclize for creating unique, secure randomised numbers for selecting winners and a PhoenixLottery contract that takes care of the main logic. Since we can't generate fully randomised numbers on the blockchain without risking security, we have to use an external oracle which in this case is Oraclize. It charges a small amount of ETH everytime it generates a random number for finishing lotteries and selecting winners. Note that the oracle is free for testnets since Ether holds no value there but you have to use real Ether when deploying the contracts on mainnet.
+This lottery contract uses Phoenix PhoenixIdentity Ids (EINs) for creating unique lotteries with rewards setup in PHNX tokens instead of ETH. It's made of an PhoenixEscrow contract that holds PHNX for each unique lottery, a Randomizer contract that generates random numbers with Oraclize for creating unique, secure randomised numbers for selecting winners and a PhoenixLottery contract that takes care of the main logic. Since we can't generate fully randomised numbers on the blockchain without risking security, we have to use an external oracle which in this case is Oraclize. It charges a small amount of ETH everytime it generates a random number for finishing lotteries and selecting winners. Note that the oracle is free for testnets since Ether holds no value there but you have to use real Ether when deploying the contracts on mainnet.
 
 ## Deployment
 1. First deploy an Identity Registry contract if you haven't already, a Phoenix Token contract and a Randomizer contract. 
@@ -8,7 +8,7 @@ This lottery contract uses Phoenix Snowflake Ids (EINs) for creating unique lott
 
 3. Set the Phoenix Lottery address on the Randomizer contract by using the `setPhoenixLottery()` function so that it can call the `endLottery()` function from the main Lottery contract with the randomly generated lottery winner. You can find a complete description of the steps in the tests.
 
-4. Get a Snowflake EIN for you account in order to create a participate in lotteries since it's the main way of interacting with the lotteries instead of addresses. The contract automatically detects if you have an EIN associated with your account.
+4. Get a PhoenixIdentity EIN for you account in order to create a participate in lotteries since it's the main way of interacting with the lotteries instead of addresses. The contract automatically detects if you have an EIN associated with your account.
 
 5. That should be it. You now should be able to use the Phoenix Lottery contract.
 
